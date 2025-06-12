@@ -1,148 +1,150 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
-import type * as Preset from '@docusaurus/preset-classic';
+// @ts-check
+import { themes as prismThemes } from 'prism-react-renderer';
 
-// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
+/** @type {import('@docusaurus/types').Config} */
+const config = {
+  title: 'Class Widgets Docs',
+  tagline: 'Class Widgets 的文档',
+  favicon: 'favicon.ico',
 
-const config: Config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
-  favicon: 'img/favicon.ico',
-
-  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
-  future: {
-    v4: true, // Improve compatibility with the upcoming Docusaurus v4
-  },
-
-  // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
+  // Production URL of the site
+  url: 'https://cw-docs.rinlit.cn',
   baseUrl: '/',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  // GitHub pages deployment config
+  organizationName: 'Class-Widgets',
+  projectName: 'Docs',
 
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: 'throw', // Option to throw error on broken links
+  onBrokenMarkdownLinks: 'warn', // Option to show a warning on broken markdown links
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
+  // Internationalization
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: 'zh-CN', // Set default locale to Traditional Chinese (Hong Kong)
+    locales: ['zh-CN'], // Supported locales
   },
 
+  // Presets to configure various parts of the site
   presets: [
     [
       'classic',
       {
         docs: {
-          sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
+          routeBasePath: '/', // Serve docs at the site's root
+          sidebarPath: './sidebars.ts', // Path to your sidebar config
+          editUrl: 'https://github.com/Class-Widgets/Docs/tree/main/', // URL for editing the docs
         },
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: './src/css/custom.css', // Path to your custom CSS
         },
-      } satisfies Preset.Options,
+      },
     ],
   ],
 
+  // Theme configuration for Navbar, Footer, and Prism (code highlighting)
   themeConfig: {
-    // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    colorMode: {
+      defaultMode: 'light',
+      disableSwitch: false,
+      respectPrefersColorScheme: true,
+    },
+    image: 'img/docusaurus-social-card.jpg', // Image for social sharing
+
+    // Navbar configuration
     navbar: {
-      title: 'My Site',
+      title: 'Class Widgets',
       logo: {
-        alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        alt: 'Class Widgets Logo',
+        src: 'favicon.ico', // Logo image path
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          type: 'docSidebar', // Link to docs sidebar
+          sidebarId: 'userDocsSidebar', // Sidebar configuration ID
           position: 'left',
-          label: 'Tutorial',
-        },
-        {to: '/blog', label: 'Blog', position: 'left'},
-        {
-          href: 'https://github.com/facebook/docusaurus',
-          label: 'GitHub',
+          label: '用户文档', // Label for the docs section
+        },{
+          type: 'docSidebar', // Link to docs sidebar
+          sidebarId: 'devDocsSidebar', // Sidebar configuration ID
+          position: 'left',
+          label: '开发者文档', // Label for the docs section
+        },{
+          type: 'docSidebar', // Link to docs sidebar
+          sidebarId: 'standardsSidebar', // Sidebar configuration ID
+          position: 'left',
+          label: '社区规范', // Label for the docs section
+        },{
+          href: 'https://classwidgets.rinlit.cn',
+          label: '官网',
           position: 'right',
         },
+        {
+          href: 'https://github.com/Class-Widgets',
+          label: 'GitHub', // GitHub link
+          position: 'right', // Right side of the navbar
+        },
       ],
     },
+
+    // Footer configuration
     footer: {
-      style: 'dark',
+      style: 'dark', // Dark style for footer
       links: [
         {
-          title: 'Docs',
+          title: '文档', // Section title
           items: [
             {
-              label: 'Tutorial',
-              to: '/docs/intro',
+              label: '用户文档', // Item label
+              to: '/', // Link to the "intro" document
+            },{
+              label: '开发者文档', // Item label
+              to: '/', // Link to the "intro" document
             },
           ],
         },
         {
-          title: 'Community',
+          title: '社区', // Social accounts section
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
-            },
+              label: 'Discord', // Social media link label
+              href: 'https://discord.gg/xhZqhGuBxu', // Social media link (X/Twitter)
+            },{
+              label: 'QQ', // Social media link label
+              href: 'https://qun.qq.com/universal-share/share?ac=1&authKey=L5dC%2B02XrjoB5ArYYGFBip7aGqTdreXdEoAb1X5%2BtQJUzwCjYd97t98xGBdsYohR&busi_data=eyJncm91cENvZGUiOiI2OTg1OTk4OTgiLCJ0b2tlbiI6InFaeGdlbnpoOHM1WHllMEp0SUNsUnZxTmdsM280K3FJRmdHbm1UNEFEUGplQk9YdUs2bXFEeWRSaGUvQUJLK2ciLCJ1aW4iOiIxOTg1NDA5NzExIn0=&data=1EBWxjW-zxlIdsZbE--bdpkjBQBz8UG_SHTt8j325Z3iawQVQKMthE6TXv-xA_VVGpTIZDMPqzpIQRfsUP4cVg&svctype=4&tempid=h5_group_info', // Social media link (X/Twitter)
+            }
           ],
         },
         {
-          title: 'More',
+          title: '更多', // More section
           items: [
             {
-              label: 'Blog',
-              to: '/blog',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              label: 'GitHub', // GitHub link
+              href: 'https://github.com/Class-Widgets', // Docusaurus GitHub link
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Class Widgets.`,
     },
+
+    // Code syntax highlighting configuration
     prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
+      theme: prismThemes.github, // Light theme for code blocks
+      darkTheme: prismThemes.dracula, // Dark theme for code blocks
     },
-  } satisfies Preset.ThemeConfig,
+  },
+
+  // Plugins configuration (e.g., search plugin)
+  themes: [
+    [
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      /** @type {import('@easyops-cn/docusaurus-search-local').PluginOptions} */
+      {
+        hashed: true, // Enable long-term cache for search index file
+        language: ['zh', 'en'], // Supported languages for search
+      },
+    ],
+  ],
 };
 
 export default config;
