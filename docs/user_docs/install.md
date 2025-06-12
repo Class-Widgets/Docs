@@ -18,11 +18,11 @@ sidebar_position: 2
 
 ## 下载 Class Widgets
 您可通过此页面下载 Class Widgets 的二进制文件：
-[下载](/download)
+[下载](https://classwidgets.rinlit.cn/download)
 
 ## 解压和运行
 下载完成后，将软件解压到一个**独立的文件夹**，然后在解压后的文件夹找到 `ClassWidgets.exe` 或 `ClassWidgets` 即可运行。
-![解压文件后找到 ClassWidgets.exe 主程序](./install-1.png)
+![解压文件后找到 ClassWidgets.exe 主程序](install-1.png)
 :::tip
 解压时请不要使用“在线解压”功能、尽量不要直接解压在“下载”文件夹或其他功能不单一的文件夹中，否则可能会出现无法预知的问题。
 请放到单独的文件夹中（如：文档\ClassWidgets）
