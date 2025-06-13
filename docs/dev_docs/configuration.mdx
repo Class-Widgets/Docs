@@ -3,6 +3,8 @@ title: 配置 Class Widgets 开发环境
 description: 本文将为你介绍如何配置 Class Widgets 的开发环境。 
 sidebar_position: 2
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 ## 确认系统需求  
 
@@ -37,25 +39,28 @@ sidebar_position: 2
 ![](./image.png)
 
 打开命令行之后即可任选下面三种方式克隆：  
-
+<Tabs><TabItem value="https" label="HTTPS" default>
 ```
 
 git clone https://github.com/{repo_owner}/Class-Widgets.git  
 
 ```
-
+  </TabItem>
+  <TabItem value="ssh" label="SSH">
 ```
 
 git clone git@github.com:{repo_owner}/Class-Widgets.git  
 
 ```
-
+  </TabItem>
+  <TabItem value="ghcli" label="GitHub CLI">
 ```
 
 gh repo clone {repo_owner}/Class-Widgets  
 
 ```
-
+  </TabItem>
+</Tabs>
 ### 安装 Requirements (依赖)  
 
 在刚才执行克隆操作的命令行中输入  
