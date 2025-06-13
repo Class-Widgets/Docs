@@ -21,3 +21,21 @@
   align-items: center;
   justify-content: center;
 }
+
+.contentContainer {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.link {
+  display: block;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: var(--ifm-color-primary); /* 使用 Docusaurus 主题色 */
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  color: var(--ifm-color-primary-dark); /* 鼠标悬停时的颜色 */
+}
