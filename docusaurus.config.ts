@@ -133,18 +133,7 @@ const config = {
       darkTheme: prismThemes.dracula, // Dark theme for code blocks
     },
   },
-
-  // Plugins configuration (e.g., search plugin)
-  themes: [
-    [
-      require.resolve('@easyops-cn/docusaurus-search-local'),
-      /** @type {import('@easyops-cn/docusaurus-search-local').PluginOptions} */
-      {
-        hashed: true, // Enable long-term cache for search index file
-        language: ['zh', 'en'], // Supported languages for search
-      },
-    ],
-  ],
+plugins: [require.resolve('docusaurus-lunr-search')],
 };
 
 export default config;
