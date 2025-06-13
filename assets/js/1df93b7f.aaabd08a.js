@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[583],{4093:(e,t,s)=>{s.r(t),s.d(t,{default:()=>c});var n=s(6672);function c(){return(0,n.useEffect)((()=>{window.location.replace("https://classwidgets.rinlit.cn/")}),[]),null}}}]);
