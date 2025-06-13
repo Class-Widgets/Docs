@@ -17,8 +17,19 @@ sidebar_position: 2
 若已满足，请进行接下来的步骤。
 
 ## 下载 Class Widgets
-您可通过此页面下载 Class Widgets 的二进制文件：
-[下载](https://classwidgets.rinlit.cn/download)
+您可通过点击此卡片下载 Class Widgets 的二进制文件：
+<iframe
+  src="https://classwidgets.rinlit.cn/vercard/"
+  style={{
+    height: '125px',
+    width: '200px',
+    border: '1px solid #ccc',
+    borderRadius: '8px',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+  }}
+/>
+
+
 
 ## 解压和运行
 下载完成后，将软件解压到一个**独立的文件夹**，然后在解压后的文件夹找到 `ClassWidgets.exe` 或 `ClassWidgets` 即可运行。
