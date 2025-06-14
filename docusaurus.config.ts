@@ -1,5 +1,7 @@
 // @ts-check
 import { themes as prismThemes } from 'prism-react-renderer';
+import { IS_PREVIEW , PR_NUMBER } from "@site/PREVIEW";
+
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -124,7 +126,7 @@ const config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Class Widgets.`,
+      copyright: IS_PREVIEW?`Preview for <a href="https://github.com/Class-Widgets/Docs/pull/${PR_NUMBER}">PR-${PR_NUMBER}</a>`:`Copyright © ${new Date().getFullYear()} Class Widgets.`,
     },
 
     // Code syntax highlighting configuration

@@ -1,0 +1,112 @@
+name: PR 预览
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 生成 GitHub App 临时令牌
+        id: auth
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.BOT_APP_ID }}
+          private-key: ${{ secrets.BOT_APP_SECRET }}
+          owner: ${{ github.repository_owner }}
+      - name: 检出主仓库代码
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.ref }}
+          fetch-depth: 0
+
+      - name: 检出 PR 修改的部分
+        run: |
+          git fetch origin pull/${{ github.event.pull_request.number }}/head:pr-${{ github.event.pull_request.number }}
+          git checkout pr-${{ github.event.pull_request.number }}
+      # 检查PR是否只修改了docs文件夹
+      - name: 检查修改部分
+        id: check-changes
+        run: |
+          CHANGED_FILES=$(git diff --name-only origin/${{ github.event.pull_request.base.ref }}...HEAD)
+          echo "Changed files:"
+          echo "$CHANGED_FILES"
+          if [[ "$CHANGED_FILES" == *"docs"* || "$CHANGED_FILES" == "" ]]; then
+            echo "Only 'docs' folder or no changes."
+            echo "ONLY_DOCS=true" >> $GITHUB_ENV
+            
+            # 筛选出修改的.md/.mdx文件
+            MD_FILES=$(echo "$CHANGED_FILES" | grep -E '\.mdx?$' | grep '^docs/' | sed 's/^docs\///;s/\.mdx\?$//')
+            echo "MD_FILES=$MD_FILES" >> $GITHUB_ENV
+          else
+            echo "Changes outside 'docs' folder detected."
+            echo "ONLY_DOCS=false" >> $GITHUB_ENV
+          fi
+
+      - name: 安装 Python and pip
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+
+      - name: 安装支持库
+        run: npm install --frozen-lockfile
+
+      - name: 更新预览配置
+        run: |
+          echo "export const IS_PREVIEW = true;" > PREVIEW.ts
+          echo "export const PR_NUMBER = ${{ github.event.pull_request.number }};" >> PREVIEW.ts
+
+      - name: 构建页面
+        run: npm run build
+
+      - name: 上传到 Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        id: deploy
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_PAGES_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_PAGES_ACCOUNT }}
+          projectName: cwdocs-preview
+          directory: build
+
+      - name: 等待部署完成并获取预览 URL
+        run: |
+          # 使用 Cloudflare API 获取部署状态
+          DEPLOYMENT_STATUS=$(curl -s -X GET "https://api.cloudflare.com/client/v4/accounts/${{ secrets.CLOUDFLARE_PAGES_ACCOUNT }}/pages/projects/cwdocs-preview/deployments" \
+            -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_PAGES_TOKEN }}" \
+            -H "Content-Type: application/json")
+          
+          # 获取最后一次部署的预览 URL
+          PREVIEW_URL=$(echo $DEPLOYMENT_STATUS | jq -r '.result[0].url')
+
+          # 设置预览 URL 环境变量
+          echo "PREVIEW_URL=$PREVIEW_URL" >> $GITHUB_ENV
+
+      - name: 评论 PR 预览链接
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ steps.auth.outputs.token }}
+          script: |
+            const prNumber = context.payload.pull_request.number;
+            const previewUrl = process.env.PREVIEW_URL;
+            let comment = `❤️感谢你的贡献，已经安排相关人员审核！\n🚀 预览部署完成！访问链接: ${previewUrl}\n⚠️Class Widgets 不为此预览内容负责！`;
+            
+            if (process.env.ONLY_DOCS === 'false') {
+              comment += '\n\n⚠️ 警告：检测到非文档目录的修改！';
+            } else if (process.env.MD_FILES) {
+              const mdFiles = process.env.MD_FILES.split('\n').filter(Boolean);
+              if (mdFiles.length > 0) {
+                comment += '\n\n📄 修改的文档页面:';
+                mdFiles.forEach(file => {
+                  comment += `\n- ${previewUrl}/${file}`;
+                });
+              }
+            }
+            
+            github.rest.issues.createComment({
+              issue_number: prNumber,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment,
+            });
