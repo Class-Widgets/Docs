@@ -29,15 +29,21 @@ jobs:
       - name: 检查修改部分
         id: check-changes
         run: |
-          CHANGED_FILES=$(git diff --name-only origin/${{ github.event.pull_request.base.ref }}...HEAD)
+          # 获取变更文件列表并添加错误处理
+          if ! CHANGED_FILES=$(git diff --name-only origin/${{ github.event.pull_request.base.ref }}...HEAD); then
+            echo "Error: Failed to get changed files list"
+            exit 1
+          fi
           echo "Changed files:"
           echo "$CHANGED_FILES"
-          if [[ "$CHANGED_FILES" == *"docs"* || "$CHANGED_FILES" == "" ]]; then
+          
+          # 检查是否只修改了docs目录
+          if [[ -z "$CHANGED_FILES" || $(echo "$CHANGED_FILES" | grep -vc '^docs/') -eq 0 ]]; then
             echo "Only 'docs' folder or no changes."
             echo "ONLY_DOCS=true" >> $GITHUB_ENV
             
-            # 筛选出修改的.md/.mdx文件
-            MD_FILES=$(echo "$CHANGED_FILES" | grep -E '\.mdx?$' | grep '^docs/' | sed 's/^docs\///;s/\.mdx\?$//')
+            # 筛选出修改的.md/.mdx文件并处理路径格式
+            MD_FILES=$(echo "$CHANGED_FILES" | grep -E '\.mdx?$' | grep '^docs/' | sed 's/^docs\///;s/\.mdx\?$//' | tr '\n' ' ')
             echo "MD_FILES=$MD_FILES" >> $GITHUB_ENV
           else
             echo "Changes outside 'docs' folder detected."
@@ -94,7 +100,7 @@ jobs:
             
             if (process.env.ONLY_DOCS === 'false') {
               comment += '\n\n⚠️ 警告：检测到非文档目录的修改！';
-            } else if (process.env.MD_FILES) {
+            } else if (process.env.MD_FILES && process.env.MD_FILES.trim() !== '') {
               const mdFiles = process.env.MD_FILES.split('\n').filter(Boolean);
               if (mdFiles.length > 0) {
                 comment += '\n\n📄 修改的文档页面:';
