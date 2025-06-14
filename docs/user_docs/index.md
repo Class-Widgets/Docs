@@ -22,6 +22,7 @@ sidebar_position: 1
 软件的时间与铃声不符怎么办？如何设置时差偏移？
 如何把小组件缩小？
 怎么快速设置调休日和换课？ -->
+
 ## ⬇️ 详细了解 Class Widgets
 GitHub: https://github.com/RinLit-233-shiroko/Class-Widgets  
 Release 发布页：https://github.com/RinLit-233-shiroko/Class-Widgets/releases  
