@@ -60,11 +60,10 @@ jobs:
       - name: 安装支持库
         run: pnpm install --frozen-lockfile
 
-      - name: 更新预览配置
+      - name: 设置预览环境变量
         run: |
-          echo "export const IS_PREVIEW = true;" > PREVIEW.ts
-          echo "export const PR_NUMBER = ${{ github.event.pull_request.number }};" >> PREVIEW.ts
-
+          echo "IS_PREVIEW=true" >> $GITHUB_ENV
+          echo "PR_NUMBER=${{ github.event.pull_request.number }}" >> $GITHUB_ENV
       - name: 构建页面
         run: pnpm run build
 
@@ -79,17 +78,34 @@ jobs:
 
       - name: 等待部署完成并获取预览 URL
         run: |
-          # 使用 Cloudflare API 获取部署状态
-          DEPLOYMENT_STATUS=$(curl -s -X GET "https://api.cloudflare.com/client/v4/accounts/${{ secrets.CLOUDFLARE_PAGES_ACCOUNT }}/pages/projects/cwdocs-preview/deployments" \
-            -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_PAGES_TOKEN }}" \
-            -H "Content-Type: application/json")
-          
-          # 获取最后一次部署的预览 URL
-          PREVIEW_URL=$(echo $DEPLOYMENT_STATUS | jq -r '.result[0].url')
+          # 重试次数和间隔
+          max_retries=3
+          retry_delay=10
 
-          # 设置预览 URL 环境变量
-          echo "PREVIEW_URL=$PREVIEW_URL" >> $GITHUB_ENV
+          for ((i=1; i<=$max_retries; i++)); do
+            # 使用 Cloudflare API 获取部署状态
+            DEPLOYMENT_STATUS=$(curl -s -X GET "https://api.cloudflare.com/client/v4/accounts/${{ secrets.CLOUDFLARE_PAGES_ACCOUNT }}/pages/projects/cwdocs-preview/deployments" \
+              -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_PAGES_TOKEN }}" \
+              -H "Content-Type: application/json")
+            
+            # 检查是否成功获取到部署状态
+            if [ $(echo $DEPLOYMENT_STATUS | jq -r '.success') = "true" ]; then
+              # 获取最后一次部署的预览 URL
+              PREVIEW_URL=$(echo $DEPLOYMENT_STATUS | jq -r '.result[0].url')
+              if [ -n "$PREVIEW_URL" ] && [ "$PREVIEW_URL" != "null" ]; then
+                echo "PREVIEW_URL=$PREVIEW_URL" >> $GITHUB_ENV
+                break
+              fi
+            fi
 
+            if [ $i -lt $max_retries ]; then
+              echo "获取预览URL失败，将在${retry_delay}秒后重试 (${i}/${max_retries})"
+              sleep $retry_delay
+            else
+              echo "错误：无法获取预览URL，重试次数已达上限"
+              exit 1
+            fi
+          done
       - name: 评论 PR 预览链接
         uses: actions/github-script@v6
         with:
@@ -102,7 +118,7 @@ jobs:
             if (process.env.ONLY_DOCS === 'false') {
               comment += '\n\n⚠️ 警告：检测到非文档目录的修改！';
             } else if (process.env.MD_FILES && process.env.MD_FILES.trim() !== '') {
-              const mdFiles = process.env.MD_FILES.split('\n').filter(Boolean);
+              const mdFiles = process.env.MD_FILES.split(' ').filter(Boolean);
               if (mdFiles.length > 0) {
                 comment += '\n\n📄 修改的文档页面:';
                 mdFiles.forEach(file => {
