@@ -1,6 +1,6 @@
 // @ts-check
 import { themes as prismThemes } from 'prism-react-renderer';
-import { IS_PREVIEW , PR_NUMBER } from "@site/PREVIEW";
+import { IS_PREVIEW , PR_NUMBER } from "./PREVIEW";
 
 
 /** @type {import('@docusaurus/types').Config} */
