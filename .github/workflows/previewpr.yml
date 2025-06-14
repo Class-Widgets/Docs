@@ -50,14 +50,15 @@ jobs:
             echo "ONLY_DOCS=false" >> $GITHUB_ENV
           fi
 
-      - name: 安装 Python and pip
+      - name: 安装 Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
-          cache: npm
-
+          node-version: 20
+      - uses: pnpm/action-setup@v4
+        with:
+          version: latest
       - name: 安装支持库
-        run: npm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: 更新预览配置
         run: |
@@ -65,7 +66,7 @@ jobs:
           echo "export const PR_NUMBER = ${{ github.event.pull_request.number }};" >> PREVIEW.ts
 
       - name: 构建页面
-        run: npm run build
+        run: pnpm run build
 
       - name: 上传到 Cloudflare Pages
         uses: cloudflare/pages-action@v1
