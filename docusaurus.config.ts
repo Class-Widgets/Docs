@@ -6,8 +6,10 @@ import { IS_PREVIEW , PR_NUMBER } from "./PREVIEW";
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Class Widgets Docs',
-  tagline: 'Class Widgets 的文档',
+  tagline: 'Class Widgets 文档',
   favicon: 'favicon.ico',
+
+  themes: ['@docusaurus/theme-mermaid'],
 
   // Production URL of the site
   url: 'https://cw-docs.rinlit.cn',
@@ -22,8 +24,8 @@ const config = {
 
   // Internationalization
   i18n: {
-    defaultLocale: 'zh-CN', // Set default locale to Traditional Chinese (Hong Kong)
-    locales: ['zh-CN'], // Supported locales
+    defaultLocale: 'zh', // Set default locale to Simplified Chinese
+    locales: ['zh', 'en'], // Supported locales
   },
 
   // Presets to configure various parts of the site
@@ -64,23 +66,25 @@ const config = {
           type: 'docSidebar', // Link to docs sidebar
           sidebarId: 'userDocsSidebar', // Sidebar configuration ID
           position: 'left',
-          label: '用户文档', // Label for the docs section
+          label: '使用说明', // Label for the docs section
         },{
           type: 'docSidebar', // Link to docs sidebar
           sidebarId: 'devDocsSidebar', // Sidebar configuration ID
           position: 'left',
-          label: '开发者文档', // Label for the docs section
+          label: '开发', // Label for the docs section
         },{
           type: 'docSidebar', // Link to docs sidebar
           sidebarId: 'standardsSidebar', // Sidebar configuration ID
           position: 'left',
-          label: '社区规范', // Label for the docs section
+          label: '社区', // Label for the docs section
+        },{
+          type: 'localeDropdown',
+          position: 'right', // Position of the locale dropdown
         },{
           href: 'https://classwidgets.rinlit.cn',
           label: '官网',
           position: 'right',
-        },
-        {
+        },{
           href: 'https://github.com/Class-Widgets',
           label: 'GitHub', // GitHub link
           position: 'right', // Right side of the navbar
@@ -96,10 +100,10 @@ const config = {
           title: '文档', // Section title
           items: [
             {
-              label: '用户文档', // Item label
+              label: '使用说明', // Item label
               to: '/', // Link to the "intro" document
             },{
-              label: '开发者文档', // Item label
+              label: '开发', // Item label
               to: '/', // Link to the "intro" document
             },
           ],
@@ -133,9 +137,12 @@ const config = {
     prism: {
       theme: prismThemes.github, // Light theme for code blocks
       darkTheme: prismThemes.dracula, // Dark theme for code blocks
-    },
+    }
   },
-plugins: [require.resolve('docusaurus-lunr-search')],
+  plugins: [require.resolve('docusaurus-lunr-search')],
+  markdown: {
+    mermaid: true,
+  },
 };
 
 export default config;
