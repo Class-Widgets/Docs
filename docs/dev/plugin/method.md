@@ -1,6 +1,6 @@
 # 插件方法
 
-### 如何调用方法？ {#how-to}
+### 如何调用方法？  
 
 仅需在 `self.method` 中调用即可，代码如下：  
 
@@ -18,9 +18,9 @@ class Plugin(PluginBase):  # 定义插件类
 
 ```
 
-### 插件方法 {#detail}
+### 插件方法  
 
-#### 注册小组件 (register_widget) {#register_widget}
+#### 注册小组件 (register_widget)  
 
 `self.method.register_widget(widget_code=str, widget_name=str, widget_width=int)`  
 您可以通过此方法注册一个或多个小组件。  
@@ -41,7 +41,7 @@ class Plugin(PluginBase):  # 定义插件类
 ```
 
 这条语句用于向 Class Widgets 注册您的小组件。  
-#### 获取小组件（get_widget） {#get_widget}
+#### 获取小组件（get_widget）  
 
 `self.method.get_widget(widget_code=str)`  
 您可以通过此方法获取任意一个小组件的实例，并对这个实例进行操作  
@@ -62,12 +62,12 @@ class Plugin(PluginBase):  # 定义插件类
         self.your_plugin = self.method.get_widget(WIDGET_CODE)  # 获取小组件对象  
 
         """  
-接下来就可以对 `self.your_plugin` 进行各种修改了。  
+接下来就可以对 self.your_plugin 进行各种修改了。  
 """  
 
 ```
 
-#### 修改组件内容（change_widget_content） {#change_widget_content}
+#### 修改组件内容（change_widget_content）  
 
 `self.method.change_widget_content(widget_code=str, title=str, content=str)  `
 在需求不大时，可以用此方法修改一些小组件的内容  
@@ -90,7 +90,7 @@ class Plugin(PluginBase):  # 定义插件类
 
 ```
 
-#### 修改小组件宽度 (adjust_widget_width) {#adjust_widget_width}
+#### 修改小组件宽度 (adjust_widget_width)  
 
 `self.method.change_widget_content(widget_code=str, width=int)`  
 您可以通过此方法来动态地修改小组件在屏幕上显示的宽度  
@@ -115,7 +115,7 @@ class Plugin(PluginBase):  # 定义插件类
 
 ```
 
-#### 发送通知（send_notification） {#send_notification}
+#### 发送通知（send_notification）  
 
 ```python
 self.method.send_notification(  
