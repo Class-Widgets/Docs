@@ -1,6 +1,6 @@
 # 插件结构
 
-### 目录 {#overview}
+### 目录  
 
 ```
 
@@ -18,9 +18,9 @@
 
 ```
 
-### 内容结构 {#structure}
+### 内容结构  
 
-#### main.py (主程序) {#main-py}
+#### main.py (主程序)  
 
 主程序执行的部分。  
 
@@ -57,7 +57,7 @@ class Settings(SettingsBase):  # 设置类
 
 ```
 
-#### __init__.py（初始化插件） {#init-py}
+#### __init__.py（初始化插件）  
 
 __init__.py 存放了插件所需要的方法，Class Widgets将会加载其中引入的内容。  
 
