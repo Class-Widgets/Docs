@@ -26,5 +26,9 @@
   "item.label.GitHub": {
     "message": "GitHub",
     "description": "Navbar item with label GitHub"
+  },
+  "item.label.了解": {
+    "message": "了解",
+    "description": "Navbar item with label 了解"
   }
 }
