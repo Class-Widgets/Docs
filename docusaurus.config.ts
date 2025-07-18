@@ -63,6 +63,12 @@ const config = {
       },
       items: [
         {
+          type: 'doc',
+          docId: 'about', // Document ID to link to
+          position: 'left',
+          label: '了解', // Label for the navbar item
+        },
+        {
           type: 'docSidebar', // Link to docs sidebar
           sidebarId: 'userDocsSidebar', // Sidebar configuration ID
           position: 'left',
@@ -80,6 +86,16 @@ const config = {
         },{
           type: 'localeDropdown',
           position: 'right', // Position of the locale dropdown
+          dropdownItemsAfter: [
+              {
+                type: 'html',
+                value: '<hr style="margin: 0.3rem 0;">',
+              },
+              {
+                href: 'https://zh.crowdin.com/project/cw-docs',
+                label: '帮助翻译',
+              },
+            ],
         },{
           href: 'https://classwidgets.rinlit.cn',
           label: '官网',
