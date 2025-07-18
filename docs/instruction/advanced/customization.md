@@ -3,16 +3,16 @@
 ![help_docu – 3.png](/instr/cover/adv/custom.png)
 
 本文将介绍 Class Widgets 中的“自定义”设置。  
-## 介绍 {#introduction}
+## 介绍  
 
 ![Image 10.png](/instr/adv/custom-settings.png)
 
 Class Widgets 支持多项自定义设置！您可以在此页面自由定义属于您的 Class Widgets。  
-## 主题 {#theme}
+## 主题  
 
 在 Class Widgets 中，您可以选择适合的主题。对于支持亮暗色的主题，将会在颜色模式切换时更换不同的风格。  
 详见 [“主题”](./theme) 板块。  
-### 自定义倒计时 {#countdown}
+### 自定义倒计时  
 
 ![widget-Countdown.png](/instr/adv/custom-wg-countd.png)
 
@@ -21,7 +21,7 @@ Class Widgets 支持在小组件中添加自定义倒计时，可用于选择特
 :::tip
 在使用“自定义倒计时”前，需添加这个小组件。 
 ::: 
-### 天气 {#weather}
+### 天气  
 
 ![widget-weather.png](/instr/adv/custom-wg-wea.png)
 
