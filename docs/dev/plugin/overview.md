@@ -3,20 +3,23 @@
 恭喜你来到这一步！现在我们足矣自己编写一个能在 Class Widgets 运行的插件了。  
 ## 设置开发环境  
 
-详见[“配置 Class Widgets 开发环境”](https://www.yuque.com/rinlit/cw-docs-dev/ou7d3qvyfnniwel8)  
+详见[“配置 Class Widgets 开发环境”](../configuration)  
 ## 创建项目  
 
 您可以通过项目模板来快速构建一个可以运行的插件。  
-1前往[插件模板仓库](https://github.com/Class-Widgets/cw-plugin-template)中使用此模板创建您的插件仓库；  
+1. 前往[插件模板仓库](https://github.com/Class-Widgets/cw-plugin-template)中使用此模板创建您的插件仓库；  
 
-![image.png](./1.png)
+![image.png](/dev/plugin-overview-1.png)
 
-🚧 注意：  
+:::note  
 若您希望您的插件能在“插件广场”上架的话，请注意仓库的命名请不要与在“插件广场”的任意项目重合。  
-2将您创建的仓库使用[Git](https://git-scm.com/)克隆至本地；  
-💡 提示： 建议将您的项目放在 Class Widgets 的 plugins目录下，以更好地测试插件。  
-3使用您的IDE打开您的项目文件夹。  
-4🎉大功告成！  
+:::
+2. 将您创建的仓库使用 Git 克隆至本地；  
+:::tip
+建议将您的项目放在 Class Widgets 的 plugins 目录下，以更好地测试插件。  
+:::
+3. 使用您的IDE打开您的项目文件夹。  
+4. 🎉大功告成！  
 插件模板已配置了绝大多数内容，接下来，您仅需要了解下列简单的内容即可，无需您手动创建/修改。  
 ## 插件配置文件  
 
@@ -61,7 +64,7 @@
 
 若您将您的项目放置在 Class Widgets 的plugins文件夹，即可方便地调试插件。  
 1在“设置”中启用您的插件；  
-![](./2.png)]
+![](/dev/plugin-overview-2.png)]
 2重新启动 Class Widgets；  
 3若在控制台中看到如下内容即代表插件成功加载。  
 

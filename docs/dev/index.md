@@ -1,7 +1,6 @@
 ---
-title: 开发者文档
+title: 开始
 description: 这是开发者文档的首页
-sidebar_position: 1
 ---
 
 > 此文档仍在编写

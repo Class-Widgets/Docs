@@ -1,6 +1,5 @@
 ---
 title: 首页
-sidebar_position: 1
 ---
 
 ## 👋 欢迎来到 Class Widgets 社区规范

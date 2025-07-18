@@ -7,7 +7,7 @@
 一首先，需要用 pip 将您需要安装的第三方库安装到插件目录；  
 (一)在“资源管理器”中打开您的插件目录并在地址栏输入cmd  
 
-![image.png](./3.png)
+![image.png](/dev/plugin-advanced.png)
 
 (二)输入如下命令：  
 
