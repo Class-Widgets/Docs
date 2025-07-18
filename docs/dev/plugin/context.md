@@ -1,6 +1,6 @@
 # 插件接口
 
-### 如何调用接口？  
+### 如何调用接口？ {#how-to}
 
 仅需在 `self.cw_contexts` 中调用即可，代码如下：  
 
@@ -22,18 +22,18 @@ class Plugin(PluginBase):  # 定义插件类
 
 在 Class Widgets 加载上述内容时，将会在终端输出 Class Widgets 获取的天气信息。  
 如：当前天气：多云  
-### 插件接口  
+### 插件接口 {#detail}
 
-#### 自定义小组件  
+#### 自定义小组件 {#customize-widget}
 
 - Widgets_Width (dict)：获取所有被注册小组件宽度的字典实例。  
 - Widgets_Name (dict)：获取所有被注册小组件名称的字典实例。  
 - Widgets_Code (dict)：获取所有被注册小组件代号的字典实例  
-#### 获取课程状态  
+#### 获取课程状态 {#get-state}
 
 - Current_Lesson (str)：当前课程名。  
 - State (int)：上下课状态，0为课间，1为上课。  
-#### 获取天气状况和通知内容  
+#### 获取天气状况和通知内容 {#get-weather-and-notification}
 
 - Weather (str)：天气状况，Class Widgets 将会把自身获取到的天气情况返回到接口。  
 - Temp (int)：当前温度，同上。  
@@ -58,6 +58,6 @@ class Plugin(PluginBase):  # 定义插件类
     | subtitle | 通知副标题（仅在4中生效） |
     | content | 通知标题（仅在4中生效） |
 
-#### 关于插件  
+#### 关于插件 {#get-plugin-prop}
 
 - `PLUGIN_PATH` (str)：获取插件的工作目录，以方便调取插件本地内容，如插件存储的图片、配置资源
