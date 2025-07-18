@@ -1,0 +1,38 @@
+{
+  "link.title.documents": {
+    "message": "文档",
+    "description": "The title of the footer links column with title=文档 in the footer"
+  },
+  "link.title.community": {
+    "message": "社区",
+    "description": "The title of the footer links column with title=社区 in the footer"
+  },
+  "link.title.more": {
+    "message": "更多",
+    "description": "The title of the footer links column with title=更多 in the footer"
+  },
+  "link.item.label.instruction": {
+    "message": "使用说明",
+    "description": "The label of footer link with label=使用说明 linking to /"
+  },
+  "link.item.label.dev": {
+    "message": "开发",
+    "description": "The label of footer link with label=开发 linking to /"
+  },
+  "link.item.label.Discord": {
+    "message": "Discord",
+    "description": "The label of footer link with label=Discord linking to https://discord.gg/xhZqhGuBxu"
+  },
+  "link.item.label.QQ": {
+    "message": "QQ",
+    "description": "The label of footer link with label=QQ linking to https://qun.qq.com/universal-share/share?ac=1&authKey=L5dC%2B02XrjoB5ArYYGFBip7aGqTdreXdEoAb1X5%2BtQJUzwCjYd97t98xGBdsYohR&busi_data=eyJncm91cENvZGUiOiI2OTg1OTk4OTgiLCJ0b2tlbiI6InFaeGdlbnpoOHM1WHllMEp0SUNsUnZxTmdsM280K3FJRmdHbm1UNEFEUGplQk9YdUs2bXFEeWRSaGUvQUJLK2ciLCJ1aW4iOiIxOTg1NDA5NzExIn0=&data=1EBWxjW-zxlIdsZbE--bdpkjBQBz8UG_SHTt8j325Z3iawQVQKMthE6TXv-xA_VVGpTIZDMPqzpIQRfsUP4cVg&svctype=4&tempid=h5_group_info"
+  },
+  "link.item.label.GitHub": {
+    "message": "GitHub",
+    "description": "The label of footer link with label=GitHub linking to https://github.com/Class-Widgets"
+  },
+  "copyright": {
+    "message": "Copyright © 2025 Class Widgets.",
+    "description": "The footer copyright"
+  }
+}
