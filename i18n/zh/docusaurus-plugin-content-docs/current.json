@@ -3,19 +3,19 @@
     "message": "Next",
     "description": "The label for version current"
   },
-  "sidebar.userDocsSidebar.category.课程表": {
+  "sidebar.userDocsSidebar.category.schedule": {
     "message": "课程表",
     "description": "The label for category 课程表 in sidebar userDocsSidebar"
   },
-  "sidebar.userDocsSidebar.category.高级": {
+  "sidebar.userDocsSidebar.category.advanced": {
     "message": "高级",
     "description": "The label for category 高级 in sidebar userDocsSidebar"
   },
-  "sidebar.userDocsSidebar.category.常见问题": {
+  "sidebar.userDocsSidebar.category.faq": {
     "message": "常见问题",
     "description": "The label for category 常见问题 in sidebar userDocsSidebar"
   },
-  "sidebar.devDocsSidebar.category.插件编写": {
+  "sidebar.devDocsSidebar.category.plugin": {
     "message": "插件编写",
     "description": "The label for category 插件编写 in sidebar devDocsSidebar"
   }
