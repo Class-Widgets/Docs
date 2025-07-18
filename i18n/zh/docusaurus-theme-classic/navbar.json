@@ -7,19 +7,19 @@
     "message": "Class Widgets Logo",
     "description": "The alt text of navbar logo"
   },
-  "item.label.使用说明": {
+  "item.label.instruction": {
     "message": "使用说明",
     "description": "Navbar item with label 使用说明"
   },
-  "item.label.开发": {
+  "item.label.dev": {
     "message": "开发",
     "description": "Navbar item with label 开发"
   },
-  "item.label.社区": {
+  "item.label.community": {
     "message": "社区",
     "description": "Navbar item with label 社区"
   },
-  "item.label.官网": {
+  "item.label.website": {
     "message": "官网",
     "description": "Navbar item with label 官网"
   },
