@@ -1,6 +1,6 @@
 files:
   - source: /docs/community/**/*
-    translation: /docs/%two_letters_code%/community/%original_file_name%
+    translation: /i18n/%two_letters_code%/docusaurus-plugin-content-docs/current/community/%original_file_name%
   - source: /docs/dev/**/*
     translation: /docs/%two_letters_code%/dev/%original_file_name%
   - source: /docs/instruction/**/*
