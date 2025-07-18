@@ -1,0 +1,30 @@
+{
+  "title": {
+    "message": "Class Widgets",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "Class Widgets Logo",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.使用说明": {
+    "message": "使用说明",
+    "description": "Navbar item with label 使用说明"
+  },
+  "item.label.开发": {
+    "message": "开发",
+    "description": "Navbar item with label 开发"
+  },
+  "item.label.社区": {
+    "message": "社区",
+    "description": "Navbar item with label 社区"
+  },
+  "item.label.官网": {
+    "message": "官网",
+    "description": "Navbar item with label 官网"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  }
+}
