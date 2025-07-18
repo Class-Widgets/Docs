@@ -1,21 +1,21 @@
 {
-  "link.title.文档": {
+  "link.title.documents": {
     "message": "文档",
     "description": "The title of the footer links column with title=文档 in the footer"
   },
-  "link.title.社区": {
+  "link.title.community": {
     "message": "社区",
     "description": "The title of the footer links column with title=社区 in the footer"
   },
-  "link.title.更多": {
+  "link.title.more": {
     "message": "更多",
     "description": "The title of the footer links column with title=更多 in the footer"
   },
-  "link.item.label.使用说明": {
+  "link.item.label.instruction": {
     "message": "使用说明",
     "description": "The label of footer link with label=使用说明 linking to /"
   },
-  "link.item.label.开发": {
+  "link.item.label.dev": {
     "message": "开发",
     "description": "The label of footer link with label=开发 linking to /"
   },
