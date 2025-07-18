@@ -1,0 +1,22 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.userDocsSidebar.category.课程表": {
+    "message": "课程表",
+    "description": "The label for category 课程表 in sidebar userDocsSidebar"
+  },
+  "sidebar.userDocsSidebar.category.高级": {
+    "message": "高级",
+    "description": "The label for category 高级 in sidebar userDocsSidebar"
+  },
+  "sidebar.userDocsSidebar.category.常见问题": {
+    "message": "常见问题",
+    "description": "The label for category 常见问题 in sidebar userDocsSidebar"
+  },
+  "sidebar.devDocsSidebar.category.插件编写": {
+    "message": "插件编写",
+    "description": "The label for category 插件编写 in sidebar devDocsSidebar"
+  }
+}
