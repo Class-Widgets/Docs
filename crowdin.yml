@@ -1,0 +1,9 @@
+files:
+  - source: /docs/community/**/*
+    translation: /docs/%two_letters_code%/community/%original_file_name%
+  - source: /docs/dev/**/*
+    translation: /docs/%two_letters_code%/dev/%original_file_name%
+  - source: /docs/instruction/**/*
+    translation: /docs/%two_letters_code%/instruction/%original_file_name%
+  - source: /docs/about.md
+    translation: /docs/%two_letters_code%/about.md
