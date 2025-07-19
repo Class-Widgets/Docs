@@ -1,6 +1,19 @@
-/user_docs/course_schedule/* /instruction/schedule/:splat 301
-/dev_docs/Plugin-Writing/* /dev/plugin/:splat 301
+/user_docs/course_schedule/* /instruction/schedule/ 301
+/user_docs/advanced-settings/* /instruction/advanced/ 301
+/user_docs/about_Class_Widgets /about 301
+/user_docs/faq/* /instruction/faq 301
+/dev_docs/Plugin-Writing/* /dev/plugin/ 301
 
 /user_docs/* /instruction/:splat 301
 /dev_docs/* /dev/:splat 301
 /standarts/* /community/:splat 301
+
+/en/user_docs/course_schedule/* /en/instruction/schedule/ 301
+/en/user_docs/advanced-settings/* /en/instruction/advanced/ 301
+/en/user_docs/about_Class_Widgets /en/about 301
+/en/user_docs/faq/* /en/instruction/faq 301
+/en/dev_docs/Plugin-Writing/* /en/dev/plugin/ 301
+
+/en/user_docs/* /en/instruction/:splat 301
+/en/dev_docs/* /en/dev/:splat 301
+/en/standarts/* /en/community/:splat 301
