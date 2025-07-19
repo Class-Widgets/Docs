@@ -1,0 +1,6 @@
+/user_docs/course_schedule/* /instruction/schedule/:splat 301
+/dev_docs/Plugin-Writing/* /dev/plugin/:splat 301
+
+/user_docs/* /instruction/:splat 301
+/dev_docs/* /dev/:splat 301
+/standarts/* /community/:splat 301
