@@ -157,43 +157,6 @@ const config = {
   },
   plugins: [
     require.resolve('docusaurus-lunr-search'),
-    [
-      '@docusaurus/plugin-client-redirects',
-      {
-        redirects: [
-          {
-            to: '/instruction',
-            from: '/user_docs',
-          },
-          {
-            to: '/dev',
-            from: '/dev_docs',
-          },
-          {
-            to: '/community',
-            from: '/standards',
-          },
-        ],
-        createRedirects(existingPath) {
-          if (existingPath.includes('/instruction')) {
-            return [
-              existingPath.replace('/instruction', '/user_docs'),
-            ];
-          }
-          if (existingPath.includes('/dev')) {
-            return [
-              existingPath.replace('/dev', '/dev_docs'),
-            ];
-          }
-          if (existingPath.includes('/community')) {
-            return [
-              existingPath.replace('/community', '/standards'),
-            ];
-          }
-          return undefined; // Return a falsy value: no redirect created
-        },
-      },
-    ],
   ],
   markdown: {
     mermaid: true,
