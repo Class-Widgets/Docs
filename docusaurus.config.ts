@@ -155,7 +155,9 @@ const config = {
       darkTheme: prismThemes.dracula, // Dark theme for code blocks
     }
   },
-  plugins: [require.resolve('docusaurus-lunr-search')],
+  plugins: [
+    require.resolve('docusaurus-lunr-search'),
+  ],
   markdown: {
     mermaid: true,
   },
