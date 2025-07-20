@@ -157,6 +157,55 @@ const config = {
   },
   plugins: [
     require.resolve('docusaurus-lunr-search'),
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            to: '/instruction/schedule/index',
+            from: '/user_docs/course_schedule/*',
+          },
+          {
+            to: '/dev/plugin/index',
+            from: '/dev_docs/Plugin-Writing/*',
+          }
+        ],
+        createRedirects(existingPath) {
+          if (existingPath.includes('/instruction')) {
+            var result = existingPath.replace('/instruction', '/user_docs');
+            if (existingPath.includes('/advanced-settings')) {
+              result = result.replace('/advanced-settings', '/advanced');
+            }
+            if (existingPath.includes('/course_schedule')) {
+              result = result.replace('/course_schedule', '/schedule');
+            }
+            if (existingPath.includes('/about_Class_Widgets')) {
+              return [
+                existingPath.replace('/instruction/about_Class_Widgets', '/about'),
+              ];
+            }
+            return [
+              result,
+            ];
+          }
+          if (existingPath.includes('/dev')) {
+            var result = existingPath.replace('/dev_docs', '/dev');
+            if (existingPath.includes('/Plugin-Writing')) {
+              result = result.replace('/Plugin-Writing', '/plugin');
+            }
+            return [
+              result,
+            ];
+          }
+          if (existingPath.includes('/community')) {
+            return [
+              existingPath.replace('/community', '/standards'),
+            ];
+          }
+          return undefined; // Return a falsy value: no redirect created
+        },
+      },
+    ],
   ],
   markdown: {
     mermaid: true,
