@@ -160,16 +160,6 @@ const config = {
     [
       '@docusaurus/plugin-client-redirects',
       {
-        redirects: [
-          {
-            to: '/instruction/schedule/index',
-            from: '/user_docs/course_schedule/*',
-          },
-          {
-            to: '/dev/plugin/index',
-            from: '/dev_docs/Plugin-Writing/*',
-          }
-        ],
         createRedirects(existingPath) {
           if (existingPath.includes('/instruction')) {
             var result = existingPath.replace('/instruction', '/user_docs');
