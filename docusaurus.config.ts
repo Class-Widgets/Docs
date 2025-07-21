@@ -163,25 +163,25 @@ const config = {
         createRedirects(existingPath) {
           if (existingPath.includes('/instruction')) {
             var result = existingPath.replace('/instruction', '/user_docs');
-            if (existingPath.includes('/advanced-settings')) {
-              result = result.replace('/advanced-settings', '/advanced');
+            if (existingPath.includes('/advanced')) {
+              result = result.replace('/advanced', '/advanced-settings');
             }
-            if (existingPath.includes('/course_schedule')) {
-              result = result.replace('/course_schedule', '/schedule');
+            if (existingPath.includes('/schedule')) {
+              result = result.replace('/schedule', '/course_schedule');
             }
             if (existingPath.includes('/about_Class_Widgets')) {
               return [
-                existingPath.replace('/instruction/about_Class_Widgets', '/about'),
+                existingPath.replace('/about', '/instruction/about_Class_Widgets'),
               ];
             }
             return [
               result,
             ];
           }
-          if (existingPath.includes('/dev')) {
-            var result = existingPath.replace('/dev_docs', '/dev');
-            if (existingPath.includes('/Plugin-Writing')) {
-              result = result.replace('/Plugin-Writing', '/plugin');
+          if (existingPath.includes('/dev/')) {
+            var result = existingPath.replace('/dev/', '/dev_docs/');
+            if (existingPath.includes('/plugin')) {
+              result = result.replace('/plugin', '/Plugin-Writing');
             }
             return [
               result,
