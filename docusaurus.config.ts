@@ -155,7 +155,48 @@ const config = {
       darkTheme: prismThemes.dracula, // Dark theme for code blocks
     }
   },
-  plugins: [require.resolve('docusaurus-lunr-search')],
+  plugins: [
+    require.resolve('docusaurus-lunr-search'),
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        createRedirects(existingPath) {
+          if (existingPath.includes('/instruction')) {
+            var result = existingPath.replace('/instruction', '/user_docs');
+            if (existingPath.includes('/advanced')) {
+              result = result.replace('/advanced', '/advanced-settings');
+            }
+            if (existingPath.includes('/schedule')) {
+              result = result.replace('/schedule', '/course_schedule');
+            }
+            if (existingPath.includes('/about_Class_Widgets')) {
+              return [
+                existingPath.replace('/about', '/instruction/about_Class_Widgets'),
+              ];
+            }
+            return [
+              result,
+            ];
+          }
+          if (existingPath.includes('/dev/')) {
+            var result = existingPath.replace('/dev/', '/dev_docs/');
+            if (existingPath.includes('/plugin')) {
+              result = result.replace('/plugin', '/Plugin-Writing');
+            }
+            return [
+              result,
+            ];
+          }
+          if (existingPath.includes('/community')) {
+            return [
+              existingPath.replace('/community', '/standards'),
+            ];
+          }
+          return undefined; // Return a falsy value: no redirect created
+        },
+      },
+    ],
+  ],
   markdown: {
     mermaid: true,
   },
